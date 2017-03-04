@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>ARTHUR Case Database Prototype</title>
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <!--link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet"-->
+
+        <style>
+            .answer, .feedback { opacity: 0 };
+            /* Show it is fixed to the top */
+            body {
+              min-height: 75rem;
+              padding-top: 4.5rem;
+            }
+        </style>
+        <script type="text/javascript">
+            Case = { 
+                "title" : "Elizabeth Long",
+                "stem" : "Elizabeth Long, a forty-five-year-old divorced mother of three teenaged children, comes to you, her family physician, with a six-month history of fatigue. She tells you that she feels tired all the time and that she doesn’t even have the energy to climb the stairs at her apartment.",
+                "history" : {
+                    "mood" : {
+                        "question": "Mood",
+                        "answer": "I've been feeling a little low.",
+                        "feedback": "Important to explore possible mood disorder, and impact of illness.",
+                        "importance": "high"
+                    },
+                    "diet" : {
+                        "question": "Diet",
+                        "answer": "I miss meals frequently.",
+                        "feedback": "Important. Suspect nutritional (iron, B12/folate) deficiency.",
+                        "importance": "high"
+                    },
+                    "sleep" : {
+                        "question": "Sleep",
+                        "answer": "I've been so sleepy and sleeping all the time.",
+                        "feedback": "Important. Suspect sleep disorders.",
+                        "importance": "high"
+                    },
+                    "joint-pain" : {
+                        "question": "Joint Pain?",
+                        "answer": "None",
+                        "feedback": "Not very important in this case unless suggested elsewhere.",
+                        "importance": "low"
+                    },
+                    "medications" : {
+                        "question": "Medications and allergies",
+                        "answer" : "Diazepam 5mg for anxiety NKDA",
+                        "feedback": "Important to ask as symptoms may be a meds adverse effect.",
+                        "importance": "high"
+                    },
+                    "asoul" : {
+                        "question": "ASOUL",
+                        "answer": "45 year old divorced mother of three teenaged children living in a house in north Kingston",
+                        "feedback": "Always useful to ask to understand context, and often reveals clues about how illness manifests, and should be managed.",
+                        "importance": "high"
+                    },
+                    "substance-use" : {
+                        "question": "Smoking / Alcohol / Drugs",
+                        "answer": "None",
+                        "feedback": "Important.",
+                        "importance": "high"
+                    },
+                },
+                "physical" : {
+
+                },
+                "investigations" : {
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-toggleable-md fixed-top navbar-inverse bg-inverse">
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="#">ARTHUR Case Database</a>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#history">Hx</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#physical">Px</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="container">
+            <div class="jumbotron">
+                <h1 id="title"></h1>
+                <p class="stem"></p>
+            </div>
+
+            <div id="history">
+                <a name="history"><h1>History</h1></a>
+                <p>Click on the question to reveal the patient's answer. When
+                have finished asking history questions, press Done.</p>
+
+                <a class="btn btn-info" role="button" id="hx-done" style="color: white;">Done</a>
+
+                <table id="hx" class="table table-sm table-bordered mt-4">
+                    <thead>
+                        <th></th>
+                        <th>Question</th>
+                        <th>Response</th>
+                        <th>Feedback</th>
+                    </thead>
+                </table>
+            </div>
+
+            <div id="physical">
+                <a name="physical"><h1>Physical</h1></a>
+                <table id="px"/>
+            </div>
+
+            <div class="mt-4">
+                <a name="investigations"><h1>What investigations do you do <em>first</em>?</h1></a>
+                <table id=""/>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- local 
+        <script src="jquery-3.1.1.min.js"></script>
+        <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+        -->
+        <script>
+
+        // set up stem and title
+        $("#title").text(Case.title);
+        $("p.stem").text(Case.stem);
+
+        // build the history table
+        table = $("#hx");
+        for (i in Case.history) { 
+            question = Case.history[i];
+            rowid ="hx-" + i;
+            table.append("<tr id='" + rowid + "'></tr>");
+            $("#"+rowid).append([ 
+               '<td class="importance"><span class="' + question["importance"] + '"></span></td>',
+               '<td class="question"><span>' + question["question"] + '</div></td>', 
+               '<td class="answer"><span>' + question["answer"] + '</span></td>', 
+               '<td class="feedback">' + question["feedback"] + '</td>', 
+
+            ])
+        }
+
+        // show Hx feedback
+        $("#hx-done").click(function() {
+            $("#hx tr .feedback").css("opacity", 1);
+
+            /** selected items that should have been asked  **/
+            $("#hx tr.selected:has(.importance:not(:has(.low)))")
+                .addClass("table-success");
+                // .css("background-color", "palegreen");
+
+            /** selected items that shouldn't have been asked **/ 
+            $("#hx tr.selected:has(.importance:has(.low))")
+                .addClass("table-warning");
+                //.css("background-color", "lightyellow");
+
+            /** unselected items that should have been asked **/
+            $("#hx tr:not(.selected):has(.importance:not(:has(.low)))")
+                .addClass("table-danger");
+                //.css("background-color", "#ff8e8e");
+
+            /** unselected items that should not have been asked **/
+            $("#hx tr:not(.selected):has(.importance:has(.low))")
+                .addClass("table-success");
+                //.css("background-color", "palegreen");
+        });
+
+
+        $("#hx td.question").click(function (event) {
+            row = $(event.target).parentsUntil("table", "tr")
+            $(".answer", row).css("opacity", 1);
+            row.addClass("selected");
+        });
+        </script>
+    </body>
+</html>
