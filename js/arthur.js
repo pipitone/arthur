@@ -9,7 +9,7 @@ for (i in Case.history) {
     rowid ="hx-" + i;
     table.append("<tr id='" + rowid + "'></tr>");
     $("#"+rowid).append([ 
-            '<td class="importance"><span class="' + question["importance"] + '"></span></td>',
+            '<td class="importance-' + question["importance"] + '"><span class="icon"></span></td>',
             '<td class="question"><span>' + question["question"] + '</div></td>', 
             '<td class="answer"><span>' + question["answer"] + '</span></td>', 
             '<td class="feedback">' + question["feedback"] + '</td>', 
@@ -22,20 +22,24 @@ $("#hx-done").click(function() {
     $("#hx tr .feedback").css("opacity", 1);
 
     /** selected items that should have been asked  **/
-    $("#hx tr.selected:has(.importance:not(:has(.low)))")
-        .addClass("success");
+    $(".icon",  
+            $("#hx tbody tr.selected:not(:has(.importance-low))").addClass("success")
+     ).addClass("glyphicon glyphicon-ok");
 
     /** selected items that shouldn't have been asked **/ 
-    $("#hx tr.selected:has(.importance:has(.low))")
-        .addClass("warning");
+    $(".icon",  
+            $("#hx tbody tr.selected:has(.importance-low)").addClass("warning")
+     ).addClass("glyphicon glyphicon-exclamation-sign");
 
     /** unselected items that should have been asked **/
-    $("#hx tr:not(.selected):has(.importance:not(:has(.low)))")
-        .addClass("danger");
+    $(".icon",  
+            $("#hx tbody tr:not(.selected):not(:has(.importance-low))").addClass("danger")
+     ).addClass("glyphicon glyphicon-remove");
 
     /** unselected items that should not have been asked **/
-    $("#hx tr:not(.selected):has(.importance:has(.low))")
-        .addClass("success");
+    $(".icon",  
+            $("#hx tbody tr:not(.selected):has(.importance-low)").addClass("success")
+     ).addClass("glyphicon glyphicon-ok");
 });
 
 
