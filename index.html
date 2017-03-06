@@ -7,6 +7,7 @@
 
         <title>ARTHUR Case Database Prototype</title>
 
+        <link href="css/jquery-ui.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/arthur.css" rel="stylesheet">
     </head>
@@ -43,10 +44,9 @@
 
             <div id="history">
                 <a name="history"><h1>History</h1></a>
-                <p>Click on the question to reveal the patient's answer. When
-                have finished asking history questions, press Done.</p>
-
-                <a class="btn btn-info" role="button" id="hx-done" style="color: white;">Done</a>
+                <label for="autocomplete">Select a question to ask:</label>
+                <input id="hx_autocomplete">
+                <a class="btn btn-info" role="button" id="hx-done" style="color: white; clear:both;">Done</a>
 
                 <table id="hx" class="table table-sm table-bordered mt-4">
                     <thead>
@@ -70,6 +70,7 @@
         </div>
 
         <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/case-elong.js"></script>
         <script src="js/arthur.js"></script>
