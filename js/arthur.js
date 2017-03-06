@@ -124,7 +124,7 @@ $( document ).ready(function() {
             }
 
             row = $(document.createElement("tr")).addClass('selected').append(
-                    '<td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></td>', 
+                    '<td><span class="glyphicon glyphicon-sort"></span></td>', 
                     "<td>"+dx+"</td>", 
                     "<td></td>",
                     "<td></td>");

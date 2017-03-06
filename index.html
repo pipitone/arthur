@@ -44,7 +44,7 @@
                 <p class="stem"></p>
             </div>
 
-            <div id="history">
+            <div id="history" class="row">
                 <a name="history"><h1>History</h1></a>
                 <label for="hx_autocomplete" class="mt-4">Select a question to ask:</label>
                 <input id="hx_autocomplete">
@@ -60,7 +60,7 @@
                 </table>
             </div>
 
-            <div id="history_ddx">
+            <div id="history_ddx" class="row">
                 <a name="ddx"><h1>Post-history DDx</h1></a>
                 <p>Enter your differential diagnoses and order them from most
                 to least likely (top to bottom)..</p>
@@ -77,11 +77,12 @@
                     </thead>
                     <tbody></tbody>
                 </table>
+            </div>
 
-            <div id="physical">
+            <div id="physical" class="row">
                 <a name="physical"><h1>Physical</h1></a>
                 <label for="px_autocomplete">Select an examination to perform:</label>
-                <input id="px_autocomplete">
+                <input id="px_autocomplete" disabled="">
                 <a class="btn btn-info" role="button" id="px-done" style="color: white; clear:both;">Done</a>
 
                 <table id="px" class="table table-sm table-bordered mt-4">
@@ -94,10 +95,10 @@
                 </table>
             </div>
 
-            <div class="mt-4">
+            <div id="investigations" class="row">
                 <a name="investigations"><h1>What investigations do you do <em>first</em>?</h1></a>
                 <label for="ix_autocomplete">Select an examination to perform:</label>
-                <input id="ix_autocomplete">
+                <input id="ix_autocomplete" disabled="">
                 <a class="btn btn-info" role="button" id="ix-done" style="color: white; clear:both;">Done</a>
 
                 <table id="ix" class="table table-sm table-bordered mt-4">
