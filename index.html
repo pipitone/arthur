@@ -29,7 +29,9 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#history">Hx</a></li>
+                        <li><a href="#hx_ddx">Hx DDx</a></li>
                         <li><a href="#physical">Px</a></li>
+                        <li><a href="#investigations">Investigations</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -44,7 +46,7 @@
 
             <div id="history">
                 <a name="history"><h1>History</h1></a>
-                <label for="autocomplete">Select a question to ask:</label>
+                <label for="hx_autocomplete" class="mt-4">Select a question to ask:</label>
                 <input id="hx_autocomplete">
                 <a class="btn btn-info" role="button" id="hx-done" style="color: white; clear:both;">Done</a>
 
@@ -58,14 +60,53 @@
                 </table>
             </div>
 
+            <div id="history_ddx">
+                <a name="ddx"><h1>Post-history DDx</h1></a>
+                <p>Enter your differential diagnoses and order them from most
+                to least likely (top to bottom)..</p>
+                <label for="hxddx_autocomplete">Add a diagnosis:</label>
+                <input id="hxddx_autocomplete" type="text">
+                <a class="btn btn-info" role="button" id="hxddx-done" style="color: white; clear:both;">Done</a>
+
+                <table id="hxddx" class="table table-sm table-bordered mt-4">
+                    <thead>
+                        <th></th>
+                        <th>Diagnosis</th>
+                        <th>Expert Rank</th>
+                        <th>Expert Feedback</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
             <div id="physical">
                 <a name="physical"><h1>Physical</h1></a>
-                <table id="px"/>
+                <label for="px_autocomplete">Select an examination to perform:</label>
+                <input id="px_autocomplete">
+                <a class="btn btn-info" role="button" id="px-done" style="color: white; clear:both;">Done</a>
+
+                <table id="px" class="table table-sm table-bordered mt-4">
+                    <thead>
+                        <th></th>
+                        <th>Question</th>
+                        <th>Response</th>
+                        <th>Feedback</th>
+                    </thead>
+                </table>
             </div>
 
             <div class="mt-4">
                 <a name="investigations"><h1>What investigations do you do <em>first</em>?</h1></a>
-                <table id=""/>
+                <label for="ix_autocomplete">Select an examination to perform:</label>
+                <input id="ix_autocomplete">
+                <a class="btn btn-info" role="button" id="ix-done" style="color: white; clear:both;">Done</a>
+
+                <table id="ix" class="table table-sm table-bordered mt-4">
+                    <thead>
+                        <th></th>
+                        <th>Investigation</th>
+                        <th>Feedback</th>
+                    </thead>
+                </table>
             </div>
         </div>
 
