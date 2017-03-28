@@ -1,4 +1,4 @@
-Case = { 
+ELong = {
     "title" : "Elizabeth Long",
     "stem" : "Elizabeth Long, a forty-five-year-old divorced mother of three teenaged children, comes to you, her family physician, with a six-month history of fatigue. She tells you that she feels tired all the time and that she doesn’t even have the energy to climb the stairs at her apartment.",
     "history" : {
@@ -42,45 +42,45 @@ Case = {
 
     },
     "investigations" : {
-        "CBC": { 
-            result: "", 
+        "CBC": {
+            result: "",
             feedback: "",
             importance: "",
-        }, 
+        },
         "Creatinine": {
-            result: "", 
+            result: "",
             feedback: "",
             importance: "",
-        }, 
+        },
         "Electrolytes": {
-            result: "", 
+            result: "",
             feedback: "",
             importance: "",
-        }, 
+        },
         "Feritin": {
-            result: "", 
+            result: "",
             feedback: "",
             importance: "",
-        }, 
-        "TSH": { 
-            result: "", 
+        },
+        "TSH": {
+            result: "",
             feedback: "",
             importance: "",
-        }, 
-        "CT": { 
-            result: "", 
+        },
+        "CT": {
+            result: "",
             feedback: "",
             importance: "",
-        }, 
-        "MRI": { 
-            result: "", 
+        },
+        "MRI": {
+            result: "",
             feedback: "",
             importance: "",
-        }, 
-        "Serum electrophoresis": { 
-            result: "", 
+        },
+        "Serum electrophoresis": {
+            result: "",
             feedback: "",
             importance: "",
-        }, 
+        },
     }
 }
