@@ -1,0 +1,16 @@
+.answer, .feedback { 
+    opacity: 0;
+};
+
+.selected .answer {
+    opacity: 1 !important;
+}
+
+body {
+    min-height: 75rem;
+    padding-top: 4.5rem;
+}
+
+.row {
+    margin-top:4em;
+}
