@@ -83,8 +83,11 @@ Case = {
     substanceuse, medications, bloodTransfusions ], 
     "physical" : [generalInspection,vitals,cardiovascular,respiratory,pelvic,dre],
     "differential" : {
-          "Iron Deficiency Anemia" : { "rank": 1, "feedback": "suggested by ..."},
-          "Hypothyroidism" : {"rank": 2, "feedback": "so wrong"}
+          "Hypothyroidism" : { rank : 1, feedback : "Female presenting with menorrhagia, fatigue."}, 
+          "Iron Deficiency Anemia" : { "rank": 2, "feedback": "Secondary to menorrhagia, diet." },
+          "Some uterine pathology (fibroids, polyps, neoplasm)" : { "rank" : 3, feedback : "Cause of menorrhagia."},
+          "Perimenopause" : { rank : 4, feedback :  "Relevant in a woman of her age. Symptoms include fatigue, irregular periods, sleep disturbances."}, 
+          "Major depressive disorder" : { rank : 5, feedback: "May be cause or consequence of fatigue."}
     },
     "investigations" : {
         "CBC": {
