@@ -90,15 +90,9 @@ $( document ).ready(function() {
     // show Hx feedback
     $("#hx-done").click(function() {
         // show missing important history questions
-<<<<<<< HEAD
-        /*table = $("#hx");
-        for (question in Case.history) {
-            response = Case.history[question];
-=======
         var table = $("#hx");
         for (var question in Case.history) {
             var response = Case.history[question];
->>>>>>> origin/glitch
 
             if ($('#hx td.question:has(:contains("' + question + '"))').length != 0 ||
                     response.importance != "high") {
@@ -107,7 +101,7 @@ $( document ).ready(function() {
 
             row = $(document.createElement("tr"));
             $("#hx").append(populate_hx_row(row, question, response));
-        }*/
+        }
         $('#hx .response').show();
         $('#hx .feedback').show();
 
