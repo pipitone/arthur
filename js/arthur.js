@@ -142,8 +142,8 @@ $( document ).ready(function() {
         dx = Case.differential[$(this).attr("data-key")];
         row_class = (((i+1)==dx["rank"]) ? "success" : "danger");
         $(this).addClass(row_class);
-        $(this).find(".rank").append(dx["rank"]);
-        $(this).find(".feedback").append(dx["feedback"]);
+        $(this).find(".rank").text(dx["rank"]);
+        $(this).find(".feedback").text(dx["feedback"]);
       });
       $("#hxddx-done").attr("disabled","disabled")
     });
