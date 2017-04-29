@@ -6,3 +6,7 @@ body {
 .row {
     margin-top:4em;
 }
+
+table#cases tr:hover {
+    cursor: pointer;
+}

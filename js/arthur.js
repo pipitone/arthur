@@ -27,6 +27,10 @@ $( document ).ready(function() {
 
     }
 
+    //Load header and footer
+    $("#header").load("header.html");
+    $("#footer").load("footer.html");
+
     // set up stem and title
     $("#title").text(Case.title);
     $("p.stem").text(Case.stem);
@@ -38,14 +42,14 @@ $( document ).ready(function() {
 
     // build the history table
     var questions = Case.history;
-    var exams = Case.physical;
     for (i=0;i<questions.length;i++){
       row = $(document.createElement("tr")).addClass('hx-row');
       $("#hx").append(populate_hx_row(row, questions[i]));
     }
+    var exams = Case.physical;
     for (i=0;i<exams.length;i++){
       row = $(document.createElement("tr")).addClass('px-row');
-      $("#px").append(populate_hx_row(row, exams[i]));
+      $("#physical").append(populate_hx_row(row, exams[i]));
     }
     $( "#hx_autocomplete" ).autocomplete({
         delay: 0,
@@ -83,12 +87,28 @@ $( document ).ready(function() {
         },
     });
     // show Hx result
-    $(".hx-row, .px-row").click(function() {
+    $(".hx-row .px-row").click(function() {
       $(this).addClass('active selected');
       $(this).find('.response').show();
     })
     // show Hx feedback
     $("#hx-done").click(function() {
+        // show missing important history questions
+        /*table = $("#hx");
+        for (question in Case.history) {
+            response = Case.history[question];
+        var table = $("#hx");
+        for (var question in Case.history) {
+            var response = Case.history[question];
+
+            if ($('#hx td.question:has(:contains("' + question + '"))').length != 0 ||
+                    response.importance != "high") {
+                continue;
+            }
+
+            row = $(document.createElement("tr"));
+            $("#hx").append(populate_hx_row(row, question, response));
+        } */
         $('#hx .response').show();
         $('#hx .feedback').show();
 
