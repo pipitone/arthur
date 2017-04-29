@@ -138,12 +138,14 @@ $( document ).ready(function() {
 
     $("#hxddx-done").click(function() {
       var ordered_ddx = []
-      $("#hxddx").find("tbody tr").each(function() {
-        //ordered_ddx.append($(this).attr("data-key"));
+      $("#hxddx").find("tbody tr").each(function(i) {
         dx = Case.differential[$(this).attr("data-key")];
+        row_class = (((i+1)==dx["rank"]) ? "success" : "danger");
+        $(this).addClass(row_class);
         $(this).find(".rank").append(dx["rank"]);
-        $(this).find(".feedback").append("test");
+        $(this).find(".feedback").append(dx["feedback"]);
       });
+      $("#hxddx-done").attr("disabled","disabled")
     });
 
     var dxs = Diagnoses.concat([]);
@@ -176,26 +178,26 @@ $( document ).ready(function() {
 
     $("#hxddx tbody").sortable();
 
-    /** Investigations 
-    
-    The action here is slightly different than in the Hx/Px sections: 
-    
-    1. The student marks which investigations they would like to perform. 
+    /** Investigations
+
+    The action here is slightly different than in the Hx/Px sections:
+
+    1. The student marks which investigations they would like to perform.
     2. No results are shown until "Run investigations" is selected.
-    3. At the same time as the investigation results are shown, so is the expert feedback. 
-    
-    Expects the Case object to have the following structure for investigation data: 
-    
+    3. At the same time as the investigation results are shown, so is the expert feedback.
+
+    Expects the Case object to have the following structure for investigation data:
+
         "investigations" : {
           "CBC": {
-              result: "120", 
+              result: "120",
               feedback: "definitely ask for this because...",
               importance: "high",
           },
           ...
         }
     **/
-    var ix_table = $("#ix_table"); 
+    var ix_table = $("#ix_table");
 
     // populate the investigations table
     for (var investigation in Case.investigations) {
@@ -204,17 +206,17 @@ $( document ).ready(function() {
                 '<td class="mark"></td>',
                 '<td class="checkbox"><input type="checkbox"></input></td>',
                 '<td class="investigation">' + investigation + '</td>',
-                '<td class="result"></td>', 
+                '<td class="result"></td>',
                 '<td class="feedback"></td>');
         ix_table.append(row);
     }
 
-    // show investigations and feedback 
-    $('#ix-done').click(function () { 
+    // show investigations and feedback
+    $('#ix-done').click(function () {
         ix_table.find('tbody tr').each(function (i, el) {
             investigation = Case.investigations[ $(this).attr('data-key')];
-            $(this).find(".result").text(investigation['result']); 
+            $(this).find(".result").text(investigation['result']);
             $(this).find(".feedback").text(investigation['feedback'] + "hi");
         })
-    }); 
+    });
 });
