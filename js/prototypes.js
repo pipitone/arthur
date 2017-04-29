@@ -2,7 +2,7 @@ function Q(query,response="None",importance = "low",feedback = "Not necessary") 
   this.query = query;
   this.response = response;
   this.importance = importance;
-  this.feedback = importance;
+  this.feedback = feedback;
 }
 
 var allQ = [birthplace,occupation,nationality,education,religion,maritalStatus,children,pets,drugUse,smoking,alcoholUse,exercise,
