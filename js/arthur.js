@@ -104,7 +104,7 @@ $( document ).ready(function() {
 
             row = $(document.createElement("tr"));
             $("#hx").append(populate_hx_row(row, question, response));
-        }*/
+        } */
         $('#hx .response').show();
         $('#hx .feedback').show();
 
