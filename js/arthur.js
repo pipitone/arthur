@@ -227,8 +227,9 @@ $( document ).ready(function() {
             } else {
                 $(this).addClass('warning')
             }
-            $(this).find(".result").text(investigation['result']);
+            $(this).find(".result").html(marked(investigation['result'])); 
             $(this).find(".feedback").text(investigation['feedback']);
         })
+        $("#ix-done").attr("disabled","disabled")
     });
 });

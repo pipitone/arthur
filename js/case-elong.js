@@ -77,8 +77,8 @@ Case = {
             importance: "medium",
         },
         "MRI": {
-            result: "![dat mri](http://www.arizonastateradiology.com/images/home/grid/MRI-head-zoom-38266824-3.jpg)",
-            feedback: "mri result",
+            result: "![dat mri](http://noranclinicblog.com/wp-content/uploads/2012/10/mri_brain1.gif)",
+            feedback: "mri feedback",
             importance: "low",
         },
         "Serum electrophoresis": {
