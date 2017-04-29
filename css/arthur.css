@@ -1,7 +1,3 @@
-.answer, .feedback { 
-    opacity: 0;
-};
-
 .selected .answer {
     opacity: 1 !important;
 }
