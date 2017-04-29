@@ -52,29 +52,29 @@ Case = {
             importance: "high",
         },
         "Creatinine": {
-            result: "",
-            feedback: "",
-            importance: "",
+            result: "creatinine result",
+            feedback: "creatinine feedback",
+            importance: "high",
         },
         "Electrolytes": {
             result: "",
             feedback: "",
-            importance: "",
+            importance: "high",
         },
         "Feritin": {
             result: "",
             feedback: "",
-            importance: "",
+            importance: "high",
         },
         "TSH": {
             result: "",
             feedback: "",
-            importance: "",
+            importance: "medium",
         },
         "CT": {
             result: "",
             feedback: "",
-            importance: "",
+            importance: "medium",
         },
         "MRI": {
             result: "![dat mri](http://www.arizonastateradiology.com/images/home/grid/MRI-head-zoom-38266824-3.jpg)",
@@ -84,7 +84,7 @@ Case = {
         "Serum electrophoresis": {
             result: "",
             feedback: "",
-            importance: "",
+            importance: "low",
         },
     }
 }

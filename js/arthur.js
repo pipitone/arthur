@@ -176,35 +176,45 @@ $( document ).ready(function() {
 
     $("#hxddx tbody").sortable();
 
-    /** Investigations
-
-    The action here is slightly different than in the Hx/Px sections:
-
-    1. The student marks which investigations they would like to perform.
+    /** Investigations 
+    
+    The action here is slightly different than in the Hx/Px sections: 
+    
+    1. The student marks which investigations they would like to perform. 
     2. No results are shown until "Run investigations" is selected.
-    3. At the same time as the investigation results are shown, so is the expert feedback.
-
-    Expects the Case object to have the following structure for investigation data:
-
+    3. At the same time as the investigation results are shown, so is the expert feedback. 
+    
+    Expects the Case object to have the following structure for investigation data: 
+    
         "investigations" : {
           "CBC": {
-              result: "120",
+              result: "120", 
               feedback: "definitely ask for this because...",
               importance: "high",
           },
           ...
         }
     **/
-      var ix_table = $("#ix_table");
+    var ix_table = $("#ix_table"); 
 
+    // populate the investigations table
     for (var investigation in Case.investigations) {
-      ix_table.createElement("tr").append(
-        '<td class="mark"></td>',
-        '<td class="checkbox"><input type="checkbox"></input></td>',
-        '<td class="investigation">' + investigation + '</td>',
-        '<td class="result"></td>',
-        '<td class="feedback"></td>',
-      );
+        row = $(document.createElement("tr")).attr("data-key", investigation)
+        row.append(
+                '<td class="mark"></td>',
+                '<td class="checkbox"><input type="checkbox"></input></td>',
+                '<td class="investigation">' + investigation + '</td>',
+                '<td class="result"></td>', 
+                '<td class="feedback"></td>');
+        ix_table.append(row);
     }
 
+    // show investigations and feedback 
+    $('#ix-done').click(function () { 
+        ix_table.find('tbody tr').each(function (i, el) {
+            investigation = Case.investigations[ $(this).attr('data-key')];
+            $(this).find(".result").text(investigation['result']); 
+            $(this).find(".feedback").text(investigation['feedback'] + "hi");
+        })
+    }); 
 });
