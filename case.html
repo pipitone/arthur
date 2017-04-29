@@ -56,7 +56,7 @@
 
           <div id="history" class="row">
               <a name="history"><h1>History</h1></a>
-              <label for="hx_autocomplete" class="mt-4">Select a question to ask:</label>
+              <label for="hx_autocomplete" class="mt-4">Select the questions you would like to ask, then click the "Feedback on History" button</label>
               <input style="display:none" id="hx_autocomplete">
 
               <table id="hx" class="table table-sm table-bordered mt-4 table-hover">
@@ -72,12 +72,28 @@
               <a class="btn btn-info" role="button" id="hx-done" style="color: white; clear:both;">Feedback on History</a>
           </div>
 
+          <div id="physical" class="row">
+              <a name="physical"><h1>Physical</h1></a>
+              <label for="px_autocomplete">Select the physical exam components you would like to perform, then click the "Feedback on Physical" button</label>
+              <input id="px_autocomplete" style="display:none">
+
+              <table id="px" class="table table-sm table-bordered mt-4">
+                  <thead>
+                      <th>You Selected</th>
+                      <th>Exam</th>
+                      <th>Finding</th>
+                      <th colspan="2">Feedback</th>
+                  </thead>
+              </table>
+              <a class="btn btn-info" role="button" id="px-done" style="color: white; clear:both;">Feedback on Physical</a>
+          </div>
+
           <div id="history_ddx" class="row">
-              <a name="ddx"><h1>Preliminary DDx</h1></a>
-              <p>Enter your differential diagnoses and order them from most
-              to least likely (top to bottom)..</p>
-              <label for="hxddx_autocomplete">Add a diagnosis:</label>
-              <input id="hxddx_autocomplete" type="text">
+              <a name="ddx"><h1>Differential Diagnosis</h1></a>
+              <p>Order your differential diagnoses and order them from most
+              to least likely (top to bottom).</p>
+              <label style="display:none" for="hxddx_autocomplete">Add a diagnosis:</label>
+              <input id="hxddx_autocomplete" style="display:none" type="text">
 
               <table id="hxddx" class="table table-sm table-bordered mt-4">
                   <thead>
@@ -93,24 +109,9 @@
               <a class="btn btn-info" role="button" id="hxddx-done" style="color: white; clear:both;">Feedback on Preliminary DDx</a>
           </div>
 
-          <div id="physical" class="row">
-              <a name="physical"><h1>Physical</h1></a>
-              <label for="px_autocomplete">Select an examination to perform:</label>
-              <input id="px_autocomplete" disabled="">
-
-              <table id="px" class="table table-sm table-bordered mt-4">
-                  <thead>
-                      <th>You Selected</th>
-                      <th>Question</th>
-                      <th>Response</th>
-                      <th colspan="2">Feedback</th>
-                  </thead>
-              </table>
-              <a class="btn btn-info" role="button" id="px-done" style="color: white; clear:both;">Feedback on Physical</a>
-          </div>
-
           <div id="investigations" class="row">
-              <a name="investigations"><h1>Which investigations would you do <i>first</i>?</h1></a>
+              <a name="investigations"><h1>Investigations</h1></a>
+              <p>Which investigations would you like to order <i>first</i>?</p>
               <table id="ix_table" class="table table-sm table-bordered mt-4">
                   <thead>
                       <th>You Selected</th>

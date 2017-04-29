@@ -7,7 +7,7 @@ function populate_hx_row(row, question) {
             '<td class="check-box">⚪</td>',
             '<td class="question"><span>' + question["query"] + '</span></td>',
             '<td><span class="response" style="display:none">' + question["response"] + '</span></td>',
-            '<td class="importance-' + question["importance"] + '"><span class="icon"></span></td>',
+            '<td class="importance importance-' + question["importance"] + '" style="display:none"></td>',
             '<td><span class="feedback" style="display:none">' + question["feedback"] + '</span></td>',
     ]);
     return row;
@@ -33,29 +33,26 @@ $( document ).ready(function() {
     $("#title").text(Case.title);
     $("p.stem").text(Case.stem);
 
-
-    /**
-     * History
-     */
-
     // build the history table
     var questions = Case.history;
     for (i=0;i<questions.length;i++){
       row = $(document.createElement("tr")).addClass('hx-row');
       $("#hx").append(populate_hx_row(row, questions[i]));
     }
+    // build the physical table
     var exams = Case.physical;
     for (i=0;i<exams.length;i++){
       row = $(document.createElement("tr")).addClass('px-row');
       $("#px").append(populate_hx_row(row, exams[i]));
     }
+    // build the investigations tables
     for (var i in Case.investigations){
       row = $(document.createElement("tr")).addClass('ix-row');
       row.append([
               '<td class="check-box">⚪</td>',
               '<td class="question"><span>' + i + '</span></td>',
               '<td><span class="result" style="display:none">' + marked(Case.investigations[i]["result"]) + '</span></td>',
-              '<td class="importance-' + Case.investigations[i]["importance"] + '"><span class="icon"></span></td>',
+              '<td class="importance importance-' + Case.investigations[i]["importance"] + '"></td>',
               '<td><span class="feedback" style="display:none">' + Case.investigations[i]["feedback"] + '</span></td>',
       ]);
       $("#ix_table").append(row);
@@ -97,14 +94,27 @@ $( document ).ready(function() {
     });
     // show Hx or Px result
     $(".hx-row, .px-row").click(function() {
-      $(this).addClass('active selected');
-      $(this).find('.response').show();
-      $(this).find('.check-box').html('⚫');
+      if($(this).hasClass('selected')){
+        $(this).removeClass('active selected');
+        $(this).find('.response').hide();
+        $(this).find('.check-box').html('⚪');
+      }
+      else {
+        $(this).addClass('active selected');
+        $(this).find('.response').show();
+        $(this).find('.check-box').html('⚫');
+      }
     })
     // select Ix
     $(".ix-row").click(function() {
-      $(this).addClass('active selected');
-      $(this).find('.check-box').html('⚫');
+      if($(this).hasClass('selected')){
+        $(this).removeClass('active selected');
+        $(this).find('.check-box').html('⚪');
+      }
+      else {
+        $(this).addClass('active selected');
+        $(this).find('.check-box').html('⚫');
+      }
     })
     // show Hx feedback
     $("#hx-done").click(function() {
@@ -126,81 +136,75 @@ $( document ).ready(function() {
         } */
         $('#hx .response').show();
         $('#hx .feedback').show();
+        $('#hx .importance').show();
 
-        $("#hx tbody tr:has(.importance-high)").css("font-weight","Bold");
         /** selected items that should have been asked  **/
-        $(".icon",
+        $(".importance",
                 $("#hx tbody tr.selected:not(:has(.importance-low))").addClass("success")
-         ).addClass("glyphicon glyphicon-ok success");
+         ).html("<b>Correct</b>");
 
         /** selected items that shouldn't have been asked **/
-        $(".icon",
+        $(".importance",
                 $("#hx tbody tr.selected:has(.importance-low)").removeClass("active")
-         ).addClass("glyphicon glyphicon-exclamation-sign alert-danger");
+         ).html("Unnecessary");
 
         /** unselected items that should have been asked **/
-        $(".icon",
+        $(".importance",
                 $("#hx tbody tr:not(.selected):not(:has(.importance-low))").addClass("danger")
-         ).addClass("glyphicon glyphicon-remove");
+         ).html("<b>Missed</b>");
 
         /** unselected items that should not have been asked **/
-        $(".icon",
+        $(".importance",
                 $("#hx tbody tr:not(.selected):has(.importance-low)").removeClass("active")
-         ).addClass("glyphicon glyphicon-ok");
-
-        $("td:has(.icon)").css("background-color", "white");
+         ).html("Unnecessary");
     });
     $("#px-done").click(function() {
         $('#px .response').show();
         $('#px .feedback').show();
 
         /** selected items that should have been asked  **/
-        $(".icon",
+        $(".importance",
                 $("#px tbody tr.selected:not(:has(.importance-low))").addClass("success")
-         ).addClass("glyphicon glyphicon-ok success");
+         ).html("Correct");
 
         /** selected items that shouldn't have been asked **/
-        $(".icon",
+        $(".importance",
                 $("#px tbody tr.selected:has(.importance-low)").addClass("warning")
-         ).addClass("glyphicon glyphicon-exclamation-sign alert-danger");
+         ).html("Unnecessary");
 
         /** unselected items that should have been asked **/
-        $(".icon",
+        $(".importance",
                 $("#px tbody tr:not(.selected):not(:has(.importance-low))").addClass("danger")
-         ).addClass("glyphicon glyphicon-remove");
+         ).html("Missed");
 
         /** unselected items that should not have been asked **/
-        $(".icon",
+        $(".importance",
                 $("#px tbody tr:not(.selected):has(.importance-low)").addClass("success")
-         ).addClass("glyphicon glyphicon-ok");
-
-        $("td:has(.icon)").css("background-color", "white");
+         ).html("Unnecessary");
     });
     $("#ix-done").click(function() {
         $('#ix_table .result').show();
         $('#ix_table .feedback').show();
 
         /** selected items that should have been asked  **/
-        $(".icon",
+        $(".importance",
                 $("#ix_table tbody tr.selected:not(:has(.importance-low))").addClass("success")
-         ).addClass("glyphicon glyphicon-ok success");
+         ).html("Correct");
 
         /** selected items that shouldn't have been asked **/
-        $(".icon",
+        $(".importance",
                 $("#ix_table tbody tr.selected:has(.importance-low)").addClass("warning")
-         ).addClass("glyphicon glyphicon-exclamation-sign alert-danger");
+         ).html("Unnecessary");
 
         /** unselected items that should have been asked **/
-        $(".icon",
+        $(".importance",
                 $("#ix_table tbody tr:not(.selected):not(:has(.importance-low))").addClass("danger")
-         ).addClass("glyphicon glyphicon-remove");
+         ).html("Missed");
 
         /** unselected items that should not have been asked **/
-        $(".icon",
+        $(".importance",
                 $("#ix_table tbody tr:not(.selected):has(.importance-low)").addClass("success")
-         ).addClass("glyphicon glyphicon-ok");
-
-        $("td:has(.icon)").css("background-color", "white");
+         ).html("Unnecessary");
     });
     /**
      * Post-History DDx
@@ -255,8 +259,6 @@ $( document ).ready(function() {
             return false;
         },
     });
-
-
 
     $("#hxddx tbody").sortable();
 
