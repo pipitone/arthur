@@ -135,7 +135,7 @@ $( document ).ready(function() {
     /**
      * Post-History DDx
      */
-
+     // Build DDX Table
     var ddx = Case.differential;
     for (var x in ddx) {
       var row = $(document.createElement("tr")).attr("data-key",x).append(
@@ -147,7 +147,7 @@ $( document ).ready(function() {
       );
       $("#hxddx").append(row);
     }
-
+    //DDx Feedback
     $("#hxddx-done").click(function() {
       var ordered_ddx = []
       $("#hxddx").find("tbody tr").each(function(i) {
