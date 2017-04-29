@@ -213,8 +213,19 @@ $( document ).ready(function() {
     $('#ix-done').click(function () { 
         ix_table.find('tbody tr').each(function (i, el) {
             investigation = Case.investigations[ $(this).attr('data-key')];
+            selected = $(this).find("input[type='checkbox']").is(':checked')
+            importance = investigation['importance']
+            if (selected && importance == 'high') { 
+                $(this).addClass('success')
+            } else if (!selected && importance == 'high') {
+                $(this).addClass('danger')
+            } else if (selected && importance == 'low') {
+                $(this).addClass('danger')
+            } else {
+                $(this).addClass('warning')
+            }
             $(this).find(".result").text(investigation['result']); 
-            $(this).find(".feedback").text(investigation['feedback'] + "hi");
+            $(this).find(".feedback").text(investigation['feedback']);
         })
     }); 
 });
