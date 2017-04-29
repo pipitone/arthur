@@ -34,7 +34,7 @@ var ASOUL = new Q(
     feedback = "Lifestyle changes, external stress, etc. can cause fatigue, sleep " + 
     "disturbances.")
 
-var substanceuse = new Q(
+var drugUse = new Q(
     query = "Substance use", 
     response = "Has smoked a pack of cigarettes/day for 25 years. Denies " + 
     "drinking alcohol.",
@@ -76,11 +76,33 @@ dre.response = "Negative for occult blood.";
 dre.feedback = "Alternate sources of bleeding, presence of anovaginal fistula";
 dre.importance = "med";
 
+function shuffle(array) {
+    let counter = array.length;
+
+    // While there are elements in the array
+    while (counter > 0) {
+        // Pick a random index
+        let index = Math.floor(Math.random() * counter);
+
+        // Decrease counter by 1
+        counter--;
+
+        // And swap the last element with it
+        let temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+
+    return array;
+}
+
 Case = {
     "title" : "Elizabeth Long",
     "stem" : "Elizabeth Long, a forty-five-year-old divorced mother of three teenaged children, comes to you, her family physician, with a six-month history of fatigue. She tells you that she feels tired all the time and that she doesn’t even have the energy to climb the stairs at her apartment.",
-    "history" : [ mood, sleep, menstruation, hypothyroidism, ASOUL, diet,
-    substanceuse, medications, bloodTransfusions ], 
+	"history" : shuffle([ 
+			mood, sleep, menstruation, hypothyroidism, ASOUL, diet, drugUse,
+			medications, bloodTransfusions, birthplace, occupation, travel,
+			jointPain]), 
     "physical" : [generalInspection,vitals,cardiovascular,respiratory,pelvic,dre],
     "differential" : {
           "Hypothyroidism" : { rank : 1, feedback : "Female presenting with menorrhagia, fatigue."}, 
