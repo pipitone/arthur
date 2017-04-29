@@ -2,13 +2,15 @@ function Q(query,response="None",importance = "low",feedback = "Not necessary") 
   this.query = query;
   this.response = response;
   this.importance = importance;
-  this.feedback = importance;
+  this.feedback = feedback;
 }
 
 var allQ = [birthplace,occupation,nationality,education,religion,maritalStatus,children,pets,drugUse,smoking,alcoholUse,exercise,
   travel,caffeineUse,cancer,emphysema,glaucoma,anemia,bloodTransfusions,mood,diet,sleep,jointPain,medications];
 
-var allexams = [];
+var allexams = [generalInspection,vitals,cardiovascular,respiratory,pelvic,dre];
+
+
 //Physical questions
 var generalInspection = new Q("General Inspection", "Healthy person", "med");
 var vitals = new Q("Vitals", "HR: 72<br> BP: 120/80<br> RR: 12<br> Temp: 36.5C","med");
@@ -26,7 +28,7 @@ var religion = new Q("Religion","Christian, but hasn't been to church in years")
 var maritalStatus = new Q("Marital Status","Single");
 var children = new Q("Children","No children");
 var pets = new Q("Pets","No pets");
-var drugUse = new Q("Recreational Drug Use","Never used","med");
+var drugUse = new Q("Recreational Drug Use","Never used");
 var smoking = new Q("Smoking","Never smoked","med");
 var alcoholUse = new Q("Alcohol Use","Rarely drinks","med");
 var exercise = new Q("Exercise","1-3 times per week");

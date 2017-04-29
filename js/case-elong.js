@@ -12,7 +12,7 @@ medications.response = "Diazepam 5mg for anxiety NKDA";
 medications.feedback = "Important to ask as symptoms may be a meds adverse effect.";
 medications.importance = "high";
 bloodTransfusions.feedback = "Important if you suspect some form of anemia";
-bloodTransfusions.importance = "med";
+bloodTransfusions.importance = "high";
 //Physical Overrides
 generalInspection.response = "You see a thin, pale woman who appears her stated age. She is evidently anxious.";
 generalInspection.feedback = "Initial impression of the health of the pagient";
