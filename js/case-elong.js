@@ -1,6 +1,6 @@
-ELong = {
+Case = {
     "title" : "Elizabeth Long",
-    "stem" : "Elizabeth Long, a forty-five-year-old divorced mother of three teenaged children, comes to you, her family physician, with a six-month history of fatigue. She tells you that she feels tired all the time and that she doesn’t even have the energy to climb the stairs at her apartment.",
+    "stem" : "Elizabeth Long, a forty-five year old divorced mother of three teenaged children, comes to you, her family physician, with a six-month history of fatigue. She tells you that she feels tired all the time and that she doesn’t even have the energy to climb the stairs at her apartment.",
     "history" : {
         "Mood" : {
             "response": "I've been feeling a little low.",
@@ -41,11 +41,15 @@ ELong = {
     "physical" : {
 
     },
+    "differential" : {
+          "Iron Deficiency Anemia" : { "rank": 1, "feedback": "suggested by ..."},
+          "Hypothyroidism" : {"rank": 2, "feedback": "so wrong"}
+    },
     "investigations" : {
         "CBC": {
-            result: "",
-            feedback: "",
-            importance: "",
+            result: "cbc result",
+            feedback: "cbc feedback",
+            importance: "high",
         },
         "Creatinine": {
             result: "",
@@ -73,9 +77,9 @@ ELong = {
             importance: "",
         },
         "MRI": {
-            result: "",
-            feedback: "",
-            importance: "",
+            result: "![dat mri](http://www.arizonastateradiology.com/images/home/grid/MRI-head-zoom-38266824-3.jpg)",
+            feedback: "mri result",
+            importance: "low",
         },
         "Serum electrophoresis": {
             result: "",

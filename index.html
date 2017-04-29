@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title>ARTHUR Case Database Prototype</title>
-
         <link href="css/jquery-ui.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/arthur.css" rel="stylesheet">
@@ -63,10 +62,19 @@
                 <table id="hx" class="table table-sm table-bordered mt-4">
                     <thead>
                         <th></th>
+                        <th>Ask?</th>
                         <th>Question</th>
                         <th>Response</th>
                         <th>Feedback</th>
                     </thead>
+                    <tbody>
+                      <tr>
+                        <td></td> <!-- check or X -->
+                        <td><input type="checkbox"></input></td>
+                        <td>Medications</td>
+                        <td></td> <!-- feedback -->
+                      </tr>
+                    </tbody>
                 </table>
                 <a class="btn btn-info" role="button" id="hx-done" style="color: white; clear:both;">Feedback on History</a>
             </div>
@@ -85,7 +93,9 @@
                         <th>Expert Rank</th>
                         <th>Expert Feedback</th>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+
+                   </tbody>
                 </table>
                 <a class="btn btn-info" role="button" id="hxddx-done" style="color: white; clear:both;">Feedback on Preliminary DDx</a>
             </div>
@@ -111,9 +121,10 @@
                 <label for="ix_autocomplete">Select an examination to perform:</label>
                 <input id="ix_autocomplete" disabled="">
 
-                <table id="ix" class="table table-sm table-bordered mt-4">
+                <table id="ix_table" class="table table-sm table-bordered mt-4">
                     <thead>
                         <th></th>
+                        <th>Select</th>
                         <th>Investigation</th>
                         <th>Feedback</th>
                     </thead>
@@ -156,6 +167,7 @@
                 </div>
             </div>
         </div>
+        <script src="js/prototypes.js"></script>
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
