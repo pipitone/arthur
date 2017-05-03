@@ -13,10 +13,23 @@ function populate_hx_row(row, question) {
     return row;
 }
 
-function ddx_row(row){
-  row.append([
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
 
-  ])
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 }
 
 $( document ).ready(function() {
@@ -211,10 +224,15 @@ $( document ).ready(function() {
      */
      // Build DDX Table
     var ddx = Case.differential;
-    for (var x in ddx) {
-      var row = $(document.createElement("tr")).attr("data-key",x).append(
+    var keys = [];
+    for (key in ddx) {
+      keys.push(key);
+    }
+    keys = shuffle(keys);
+    for (var i = 0; i < keys.length; i++) {
+      var row = $(document.createElement("tr")).attr("data-key",keys[i]).append(
         '<td><span class="glyphicon glyphicon-sort"></span></td>',
-                    "<td class='diagnosis'>"+x+"</td>",
+                    "<td class='diagnosis'>"+keys[i]+"</td>",
                     "<td class='rank'></td>",
                     "<td class='feedback'></td>"
 
