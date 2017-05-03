@@ -3,7 +3,7 @@
 //Physical Overrides
 
 
-Case = {
+ednaJones = {
     "title" : "Edna Jones",
     "stem" : "Elizabeth Long, a forty-five-year-old divorced mother of three teenaged children, comes to you, her family physician, with a six-month history of fatigue. She tells you that she feels tired all the time and that she doesn’t even have the energy to climb the stairs at her apartment.",
     "history" : [mood,diet,sleep,jointPain,medications,maritalStatus,children,drugUse,bloodTransfusions],

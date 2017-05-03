@@ -18,6 +18,9 @@ var cardiovascular = new Q("Cardiovascular", "Normal heart sounds, peripheral pu
 var respiratory = new Q("Respiratory", "Normal air entry bilaterally with vesicular breath sounds");
 var pelvic = new Q("Pelvic exam","Pelvic exam normal");
 var dre = new Q("DRE","Normal rectal exam");
+var neuro = new Q("Neurological", "Normal tone, strength, reflexes, coordination, and sensation");
+var moca = new Q("MOCA","30/30");
+var visualAcuity = new Q("Visual Acuity","20/20 bilaterally");
 
 //History questions
 var birthplace = new Q("Birthplace","Kingston, Ontario");
@@ -44,3 +47,5 @@ var diet = new Q("Diet","Typical North-American diet");
 var sleep = new Q("Sleep","8 hours a night");
 var jointPain = new Q("Joint Pain");
 var medications = new Q("Medications");
+var menstruation = new Q("Menstruation","Normal");
+var thyroidSymptoms = new Q("Thyroid Symptoms");

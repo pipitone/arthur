@@ -161,7 +161,7 @@ $( document ).ready(function() {
     $("#px-done").click(function() {
         $('#px .response').show();
         $('#px .feedback').show();
-
+        $('#hx .importance').show();
         /** selected items that should have been asked  **/
         $(".importance",
                 $("#px tbody tr.selected:not(:has(.importance-low))").addClass("success")
@@ -184,8 +184,8 @@ $( document ).ready(function() {
     });
     $("#ix-done").click(function() {
         $('#ix_table .result').show();
-        $('#ix_table .feedback').show();
-
+        $('#ix_table .feedback').show();        
+        $('#hx .importance').show();
         /** selected items that should have been asked  **/
         $(".importance",
                 $("#ix_table tbody tr.selected:not(:has(.importance-low))").addClass("success")
